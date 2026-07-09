@@ -1,0 +1,254 @@
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.94), rgba(79, 70, 229, 0.95));
+  color: white;
+  border: none;
+}
+
+.hero-card .section-card__header h3,
+.hero-card .section-card__header p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-card__content {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.hero-card__content h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  margin-bottom: 0.6rem;
+}
+
+.hero-card__content p {
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+.hero-card__actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.button {
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  transition: transform 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  background: white;
+  color: var(--accent);
+}
+
+.button--ghost {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.hero-card__metrics {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.hero-card__metrics > div {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.14);
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metric-card .metric-card__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  color: var(--accent);
+}
+
+.metric-card .metric-card__main svg {
+  font-size: 1.4rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1rem;
+}
+
+.habit-list,
+.goal-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.habit-row,
+.goal-row {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  padding: 0.8rem 0.9rem;
+  background: rgba(248, 250, 252, 0.7);
+}
+
+.habit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.habit-row--done {
+  border-color: rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.habit-row__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.habit-row__meta strong,
+.goal-row__top strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.habit-row__meta small {
+  color: var(--muted);
+  display: block;
+  font-size: 0.82rem;
+}
+
+.habit-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+}
+
+.habit-row__state {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.chart-card {
+  min-height: 220px;
+}
+
+.goal-row__top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 0.55rem;
+  background: rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar > div {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.score-card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-ring__label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text);
+}
+
+.progress-ring__label strong {
+  font-size: 1.3rem;
+}
+
+.progress-ring__label span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.score-card__insights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.insight-pill {
+  color: var(--accent);
+  background: rgba(139, 92, 246, 0.1);
+  padding: 0.6rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .stats-grid,
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-card__content,
+  .stats-grid,
+  .dashboard-grid,
+  .score-card {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .score-card {
+    gap: 1rem;
+  }
+}

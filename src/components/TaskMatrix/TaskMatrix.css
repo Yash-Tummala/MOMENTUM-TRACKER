@@ -1,0 +1,219 @@
+.matrix-header{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+margin-top:20px;
+
+}
+
+.task-column{
+
+width:220px;
+
+font-weight:bold;
+
+font-size:18px;
+
+}
+
+.days{
+
+display:grid;
+
+grid-template-columns:repeat(31,40px);
+
+gap:10px;
+
+}
+
+.day{
+
+width:40px;
+
+height:40px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#eef2ff;
+
+border-radius:10px;
+
+font-weight:bold;
+
+}
+.month-selector{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:40px;
+
+margin-bottom:30px;
+
+}
+
+.month-selector button{
+
+width:48px;
+
+height:48px;
+
+border:none;
+
+border-radius:50%;
+
+background:#EEF2FF;
+
+color:#4F46E5;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.month-selector button:hover{
+
+background:#4F46E5;
+
+color:white;
+
+transform:scale(1.1);
+
+}
+
+.month-info{
+
+text-align:center;
+
+}
+
+.month-info h2{
+
+font-size:30px;
+
+margin-bottom:5px;
+
+}
+
+.month-info p{
+
+color:gray;
+
+}
+.matrix-header{
+
+display:flex;
+
+align-items:center;
+
+margin-top:30px;
+
+}
+
+.task-title{
+
+width:220px;
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+.days-container {
+    display: grid;
+    grid-template-columns: repeat(31, 50px);
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 10px;
+
+    scrollbar-width: thin;
+}
+
+.day-cell{
+
+width:50px;
+
+height:50px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#EEF2FF;
+
+border-radius:10px;
+
+font-weight:600;
+
+color:#4F46E5;
+
+transition:.3s;
+
+}
+
+.day-cell:hover{
+
+background:#4F46E5;
+
+color:white;
+
+transform:scale(1.05);
+
+}
+.task-matrix{
+
+background:white;
+
+margin-top:35px;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+overflow-x:auto;
+
+}
+.task-row {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.task-name {
+    width: 220px;
+    font-weight: 600;
+}
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(31, 40px);
+    gap: 8px;
+}
+
+.checkbox-container input {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
