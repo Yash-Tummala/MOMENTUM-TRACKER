@@ -18,8 +18,9 @@ function Habits() {
   const selectedMonth = useMemo(() => new Date(uiState.selectedMonth), [uiState.selectedMonth]);
   const monthStart = startOfMonth(selectedMonth);
   const monthEnd = endOfMonth(selectedMonth);
-  const calendarStart = startOfWeek(monthStart);
-  const calendarEnd = endOfWeek(monthEnd);
+  // Force week to start on Sunday so header labels (Sun..Sat) match the grid
+  const calendarStart = startOfWeek(monthStart, { weekStartsOn: 0 });
+  const calendarEnd = endOfWeek(monthEnd, { weekStartsOn: 0 });
   const calendarDays = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
 
   const visibleHabits = appState.habits.filter((habit) => uiState.selectedCategory === "All" || habit.category === uiState.selectedCategory);
