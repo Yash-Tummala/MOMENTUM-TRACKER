@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { addMonths, eachDayOfInterval, endOfMonth, endOfWeek, format, isSameDay, startOfMonth, startOfWeek, subMonths } from "date-fns";
+import { FaTrash } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SectionCard from "../../components/Common/SectionCard";
 import { useApp } from "../../context/useApp";
@@ -11,7 +12,7 @@ const weekdayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const categories = ["All", "Health", "Learning", "Career", "Fitness", "Finance", "Reading", "Personal"];
 
 function Habits() {
-  const { appState, uiState, analytics, toggleHabitCompletion, addHabit, setSelectedCategory, setSelectedMonth } = useApp();
+  const { appState, uiState, analytics, toggleHabitCompletion, addHabit, removeHabit, setSelectedCategory, setSelectedMonth } = useApp();
   const [form, setForm] = useState({ name: "", category: "Health", importance: "Medium", kind: "daily" });
 
   const selectedMonth = useMemo(() => new Date(uiState.selectedMonth), [uiState.selectedMonth]);
@@ -78,6 +79,9 @@ function Habits() {
                   <strong>{habit.name}</strong>
                   <small>{habit.category}</small>
                 </div>
+                <button className="habit-delete" type="button" onClick={() => removeHabit(habit.id)} aria-label={`Delete ${habit.name}`}>
+                  <FaTrash />
+                </button>
               </div>
               {calendarDays.map((day) => {
                 const dateKey = getDayKey(day);

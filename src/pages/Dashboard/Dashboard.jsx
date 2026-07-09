@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   FaBolt,
   FaCalendarCheck,
@@ -17,8 +18,12 @@ import { getDayKey } from "../../utils/analytics";
 import "./Dashboard.css";
 
 function Dashboard() {
+  const navigate = useNavigate();
   const { appState, analytics, toggleHabitCompletion } = useApp();
   const greeting = new Date().getHours() < 12 ? "Good morning" : new Date().getHours() < 18 ? "Good afternoon" : "Good evening";
+
+  const handleStartFocus = () => navigate("/focus");
+  const handleReviewGoals = () => navigate("/goals");
 
   return (
     <motion.div className="dashboard-page" {...pageTransition}>
@@ -35,8 +40,8 @@ function Dashboard() {
               Track habits, goals, focus sessions, and wins in one calm workspace built for high-performance routines.
             </p>
             <div className="hero-card__actions">
-              <button className="button button--primary">Start focus session</button>
-              <button className="button button--ghost">Review goals</button>
+              <button className="button button--primary" onClick={handleStartFocus}>Start focus session</button>
+              <button className="button button--ghost" onClick={handleReviewGoals}>Review goals</button>
             </div>
           </div>
           <div className="hero-card__metrics">

@@ -3,6 +3,8 @@ import { v4 as uuid } from "uuid";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { initialAchievements, initialEvents, initialFocusSessions, initialGoals, initialHabits, initialNotes } from "../data/seedData";
 import { getAnalytics, getDayKey } from "../utils/analytics";
+import { deleteGoal } from "../utils/goals";
+import { deleteHabit } from "../utils/habits";
 import { AppContext } from "./AppContext";
 
 export function AppProvider({ children }) {
@@ -68,6 +70,13 @@ export function AppProvider({ children }) {
     }));
   };
 
+  const removeHabit = (habitId) => {
+    setAppState((current) => ({
+      ...current,
+      habits: deleteHabit(current.habits, habitId),
+    }));
+  };
+
   const updateGoalProgress = (goalId, progress) => {
     setAppState((current) => ({
       ...current,
@@ -79,6 +88,13 @@ export function AppProvider({ children }) {
     setAppState((current) => ({
       ...current,
       goals: [...current.goals, { id: uuid(), progress: 0, ...goalInput }],
+    }));
+  };
+
+  const removeGoal = (goalId) => {
+    setAppState((current) => ({
+      ...current,
+      goals: deleteGoal(current.goals, goalId),
     }));
   };
 
@@ -119,6 +135,11 @@ export function AppProvider({ children }) {
   const toggleSidebar = () => setUiState((current) => ({ ...current, sidebarCollapsed: !current.sidebarCollapsed }));
 
   const resetApp = () => {
+    const confirmed = window.confirm("This will erase your current progress and restore the starter data. Continue?");
+    if (!confirmed) {
+      return;
+    }
+
     setAppState({
       habits: initialHabits,
       goals: initialGoals,
@@ -155,8 +176,10 @@ export function AppProvider({ children }) {
       analytics,
       toggleHabitCompletion,
       addHabit,
+      removeHabit,
       updateGoalProgress,
       addGoal,
+      removeGoal,
       addNote,
       updateNote,
       deleteNote,

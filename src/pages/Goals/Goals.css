@@ -11,10 +11,11 @@
 }
 
 .goal-card {
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 1rem;
+  border: 1px solid rgba(109, 40, 217, 0.2);
+  border-radius: 1.1rem;
   padding: 0.95rem;
-  background: rgba(248, 250, 252, 0.85);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(6, 182, 212, 0.16));
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
 }
 
 .goal-card__header {
@@ -41,6 +42,24 @@
 
 .goal-card__footer input[type="range"] {
   flex: 1;
+  accent-color: var(--accent);
+}
+
+.goal-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.goal-delete {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .goal-form {
@@ -51,10 +70,12 @@
 
 .goal-form input,
 .goal-form select {
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid rgba(109, 40, 217, 0.16);
   border-radius: 999px;
   padding: 0.7rem 0.8rem;
-  background: white;
+  background: var(--surface-soft);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 @media (max-width: 900px) {

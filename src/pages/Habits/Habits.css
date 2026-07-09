@@ -10,6 +10,7 @@
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 0.6rem;
 }
 
 .month-controls {
@@ -22,8 +23,9 @@
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 999px;
-  background: rgba(139, 92, 246, 0.12);
+  background: linear-gradient(135deg, var(--accent-soft), rgba(14,165,233,0.1));
   color: var(--accent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 .filter-row {
@@ -36,10 +38,12 @@
 .filter-row select,
 .habit-form input,
 .habit-form select {
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid rgba(109, 40, 217, 0.16);
   border-radius: 999px;
   padding: 0.65rem 0.8rem;
-  background: white;
+  background: var(--surface-soft);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .habit-grid {
@@ -58,15 +62,38 @@
 }
 
 .habit-grid__header {
+  padding: 0.3rem 0.2rem;
   color: var(--muted);
   font-size: 0.85rem;
   font-weight: 700;
+}
+
+.habit-grid__row {
+  padding: 0.35rem 0.3rem;
+  border-radius: 0.95rem;
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.08), rgba(6, 182, 212, 0.06));
 }
 
 .habit-grid__habit {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+}
+
+.habit-delete {
+  margin-left: auto;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.habit-delete:hover {
+  background: rgba(239, 68, 68, 0.16);
 }
 
 .habit-grid__habit small {
@@ -78,23 +105,26 @@
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 0.8rem;
-  background: rgba(248, 250, 252, 0.9);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.12));
   color: var(--text);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  border: 1px solid rgba(109, 40, 217, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  font-weight: 700;
 }
 
 .day-cell--done {
-  background: rgba(34, 197, 94, 0.24);
-  color: #166534;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(34, 197, 94, 0.34));
+  color: #f0fdf4;
+  border-color: rgba(34, 197, 94, 0.32);
 }
 
 .day-cell--muted {
   opacity: 0.45;
+  color: var(--muted);
 }
 
 .day-cell--today {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-secondary);
 }
 
 .habit-form {

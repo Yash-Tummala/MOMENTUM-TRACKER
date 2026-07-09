@@ -5,14 +5,14 @@
 }
 
 .hero-card {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.94), rgba(79, 70, 229, 0.95));
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 48%, #0ea5e9 100%);
   color: white;
   border: none;
 }
 
 .hero-card .section-card__header h3,
 .hero-card .section-card__header p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 .hero-card__content {
@@ -28,7 +28,7 @@
 }
 
 .hero-card__content p {
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   max-width: 640px;
 }
@@ -44,7 +44,7 @@
   border-radius: 999px;
   padding: 0.7rem 1rem;
   font-weight: 600;
-  transition: transform 180ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .button:hover {
@@ -53,12 +53,14 @@
 
 .button--primary {
   background: white;
-  color: var(--accent);
+  color: var(--accent-strong);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
 }
 
 .button--ghost {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.16);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-card__metrics {
@@ -71,7 +73,7 @@
   align-items: center;
   gap: 0.6rem;
   font-size: 0.95rem;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.16);
   padding: 0.85rem 1rem;
   border-radius: 16px;
 }
@@ -109,10 +111,10 @@
 
 .habit-row,
 .goal-row {
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 0.8rem 0.9rem;
-  background: rgba(248, 250, 252, 0.7);
+  background: var(--surface-soft);
 }
 
 .habit-row {
@@ -218,7 +220,7 @@
 
 .insight-pill {
   color: var(--accent);
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(99, 102, 241, 0.1);
   padding: 0.6rem 0.8rem;
   border-radius: 999px;
   font-size: 0.86rem;

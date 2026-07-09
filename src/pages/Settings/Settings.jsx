@@ -87,7 +87,7 @@ function Settings() {
       </SectionCard>
 
       <SectionCard title="Reset" subtitle="Start fresh when your season changes">
-        <button className="button button--ghost" onClick={resetApp}>Reset application</button>
+        <button className="button button--danger" onClick={resetApp}>Reset all progress</button>
       </SectionCard>
     </motion.div>
   );

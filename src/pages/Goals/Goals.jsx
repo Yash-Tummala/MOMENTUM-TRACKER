@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaTrash } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SectionCard from "../../components/Common/SectionCard";
 import { useApp } from "../../context/useApp";
@@ -6,7 +7,7 @@ import { pageTransition } from "../../animations/presets";
 import "./Goals.css";
 
 function Goals() {
-  const { appState, updateGoalProgress, addGoal } = useApp();
+  const { appState, updateGoalProgress, addGoal, removeGoal } = useApp();
   const [form, setForm] = useState({ title: "", category: "Career", dueDate: "", color: "#8b5cf6" });
 
   const handleSubmit = (event) => {
@@ -35,9 +36,14 @@ function Goals() {
                   <h4>{goal.title}</h4>
                   <p>{goal.category} • due {goal.dueDate || "soon"}</p>
                 </div>
-                <span className="pill" style={{ background: `${goal.color}22`, color: goal.color }}>
-                  {goal.progress}%
-                </span>
+                <div className="goal-card__actions">
+                  <span className="pill" style={{ background: `${goal.color}22`, color: goal.color }}>
+                    {goal.progress}%
+                  </span>
+                  <button className="goal-delete" type="button" onClick={() => removeGoal(goal.id)} aria-label={`Delete ${goal.title}`}>
+                    <FaTrash />
+                  </button>
+                </div>
               </div>
               <div className="progress-bar">
                 <div style={{ width: `${goal.progress}%`, background: goal.color }} />
