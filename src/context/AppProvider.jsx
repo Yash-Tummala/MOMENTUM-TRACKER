@@ -41,89 +41,148 @@ export function AppProvider({ children }) {
   }, [settings.theme, settings.accent]);
 
   const toggleHabitCompletion = (habitId, dateKey = getDayKey(new Date())) => {
-    setAppState((current) => ({
-      ...current,
-      habits: current.habits.map((habit) =>
-        habit.id === habitId
-          ? {
-              ...habit,
-              completedDates: habit.completedDates.includes(dateKey)
-                ? habit.completedDates.filter((entry) => entry !== dateKey)
-                : [...habit.completedDates, dateKey],
-            }
-          : habit
-      ),
-    }));
+    setAppState((current) => {
+      const next = {
+        ...current,
+        habits: current.habits.map((habit) =>
+          habit.id === habitId
+            ? {
+                ...habit,
+                completedDates: habit.completedDates.includes(dateKey)
+                  ? habit.completedDates.filter((entry) => entry !== dateKey)
+                  : [...habit.completedDates, dateKey],
+              }
+            : habit
+        ),
+      };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore storage errors
+      }
+      return next;
+    });
   };
 
   const addHabit = (habitInput) => {
-    setAppState((current) => ({
-      ...current,
-      habits: [
-        ...current.habits,
-        {
-          id: uuid(),
-          completedDates: [],
-          ...habitInput,
-        },
-      ],
-    }));
+    setAppState((current) => {
+      const next = {
+        ...current,
+        habits: [
+          ...current.habits,
+          {
+            id: uuid(),
+            completedDates: [],
+            ...habitInput,
+          },
+        ],
+      };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const removeHabit = (habitId) => {
-    setAppState((current) => ({
-      ...current,
-      habits: deleteHabit(current.habits, habitId),
-    }));
+    setAppState((current) => {
+      const next = { ...current, habits: deleteHabit(current.habits, habitId) };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const updateGoalProgress = (goalId, progress) => {
-    setAppState((current) => ({
-      ...current,
-      goals: current.goals.map((goal) => (goal.id === goalId ? { ...goal, progress: Math.min(100, Math.max(0, progress)) } : goal)),
-    }));
+    setAppState((current) => {
+      const next = {
+        ...current,
+        goals: current.goals.map((goal) => (goal.id === goalId ? { ...goal, progress: Math.min(100, Math.max(0, progress)) } : goal)),
+      };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const addGoal = (goalInput) => {
-    setAppState((current) => ({
-      ...current,
-      goals: [...current.goals, { id: uuid(), progress: 0, ...goalInput }],
-    }));
+    setAppState((current) => {
+      const next = { ...current, goals: [...current.goals, { id: uuid(), progress: 0, ...goalInput }] };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const removeGoal = (goalId) => {
-    setAppState((current) => ({
-      ...current,
-      goals: deleteGoal(current.goals, goalId),
-    }));
+    setAppState((current) => {
+      const next = { ...current, goals: deleteGoal(current.goals, goalId) };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const addNote = (noteInput) => {
-    setAppState((current) => ({
-      ...current,
-      notes: [{ id: uuid(), createdAt: new Date().toISOString(), ...noteInput }, ...current.notes],
-    }));
+    setAppState((current) => {
+      const next = { ...current, notes: [{ id: uuid(), createdAt: new Date().toISOString(), ...noteInput }, ...current.notes] };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const updateNote = (noteId, updates) => {
-    setAppState((current) => ({
-      ...current,
-      notes: current.notes.map((note) => (note.id === noteId ? { ...note, ...updates } : note)),
-    }));
+    setAppState((current) => {
+      const next = { ...current, notes: current.notes.map((note) => (note.id === noteId ? { ...note, ...updates } : note)) };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const deleteNote = (noteId) => {
-    setAppState((current) => ({
-      ...current,
-      notes: current.notes.filter((note) => note.id !== noteId),
-    }));
+    setAppState((current) => {
+      const next = { ...current, notes: current.notes.filter((note) => note.id !== noteId) };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const addFocusSession = (duration) => {
-    setAppState((current) => ({
-      ...current,
-      focusSessions: [...current.focusSessions, { id: uuid(), duration, completedAt: new Date().toISOString() }],
-    }));
+    setAppState((current) => {
+      const next = { ...current, focusSessions: [...current.focusSessions, { id: uuid(), duration, completedAt: new Date().toISOString() }] };
+      try {
+        window.localStorage.setItem("momentum-app-state", JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+      return next;
+    });
   };
 
   const setTheme = (theme) => setSettings((current) => ({ ...current, theme }));
